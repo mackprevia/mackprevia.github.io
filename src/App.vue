@@ -1,12 +1,18 @@
-<script setup lang="ts">
+<script lang="ts">
+import Base from './components/Base.vue'
+
+export default {
+  components: {
+    Base
+  }
+}
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <img alt="Vue logo" src="./assets/logo.jpeg" />
+  <Base msg="Em construção 🚧 🛑" />
 </template>
 
 <style>
@@ -17,5 +23,10 @@ import HelloWorld from './components/HelloWorld.vue'
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+img {
+  width: 35rem;
+  height: 35rem;
 }
 </style>
