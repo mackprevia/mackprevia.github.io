@@ -1,0 +1,33 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - name: setup git auth
+        env:
+          email: 'danielvenna2@gmail.com'
+          username: 'danielkauffmann'
+          access_token: '${secrets.ACCESS_TOKEN}'
+        run: |
+          git config --global credential.helper store
+          echo "https://${{secrets.ACCESS_TOKEN}}:x-oauth-basic@github.com" > ~/.git-credentials
+          git config --global user.email $email
+          git config --global user.name $username
+      - name: deploy to gh-pages
+        run: |
+          yarn
+          NODE_ENV=production yarn build
+          cd dist
+          git init
+          git add -A
+          git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
+          git push -f "https://github.com/${GITHUB_REPOSITORY}.git" main:gh-pages
