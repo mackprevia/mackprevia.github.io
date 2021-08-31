@@ -27,8 +27,8 @@ export default {
 div {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 p {
@@ -48,6 +48,11 @@ p {
     font-size: 1rem;
     line-height: 1.25rem;
   }
+
+  div {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
 }
 
 @media only screen and (max-width: 400px) {
@@ -58,6 +63,11 @@ p {
   p {
     font-size: 0.75rem;
     line-height: 1rem;
+  }
+
+  div {
+    margin-left: 5%;
+    margin-right: 5%;
   }
 }
 </style>

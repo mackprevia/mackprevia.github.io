@@ -12,7 +12,7 @@ export default {
 
 <template>
   <div>
-    <img alt="Vue logo" src="./assets/logo.jpeg" />
+    <img alt="MackPrevIA logo" src="./assets/logo.jpeg" />
     <Base msg="Em construção 🚧 🛑" />
   </div>
 </template>
