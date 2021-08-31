@@ -9,34 +9,55 @@ export default {
 </script>
 
 <template>
-  <section>
+  <div id="paragraph">
     <h1>{{ msg }}</h1>
-    <div id="paragraph">
-      <p>
-        O MackPrevIA tem como objeto de estudos o fenômeno científico denominado
-        Inteligência Artificial e suas imbricações com as ciências jurídicas, em
-        especial no que diz respeito à sua aplicação como instrumento para
-        melhoria da efetividade do direito previdenciário, bem como a
-        identificação dos princípios e categorias jurídicas mais adequados a
-        orientar sua regulamentação, ainda inexistente no Brasil.
-      </p>
-    </div>
-  </section>
+
+    <p>
+      O MackPrevIA tem como objeto de estudos o fenômeno científico denominado
+      Inteligência Artificial e suas imbricações com as ciências jurídicas, em
+      especial no que diz respeito à sua aplicação como instrumento para
+      melhoria da efetividade do direito previdenciário, bem como a
+      identificação dos princípios e categorias jurídicas mais adequados a
+      orientar sua regulamentação, ainda inexistente no Brasil.
+    </p>
+  </div>
 </template>
 
 <style scoped>
-section {
-  align-self: center;
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
 p {
-  display: inline-block;
   font-size: 1.25rem;
   align-self: center;
   word-wrap: break-word;
-  width: 50rem;
   line-height: 1.5rem;
   text-align: justify;
+}
+
+@media only screen and (max-width: 720px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.25rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  h1 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
 }
 </style>

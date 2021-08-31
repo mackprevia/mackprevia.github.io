@@ -11,8 +11,10 @@ export default {
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.jpeg" />
-  <Base msg="Em construção 🚧 🛑" />
+  <div>
+    <img alt="Vue logo" src="./assets/logo.jpeg" />
+    <Base msg="Em construção 🚧 🛑" />
+  </div>
 </template>
 
 <style>
@@ -22,11 +24,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+div {
+  width: fit-content;
 }
 
 img {
-  width: 35rem;
-  height: 35rem;
+  width: 100%;
+  max-width: 35rem;
+  height: auto;
 }
 </style>
