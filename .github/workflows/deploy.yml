@@ -15,7 +15,7 @@ jobs:
       - name: setup git auth
         env:
           username: 'github-actions'
-          access_token: '${secrets.ACCESS_TOKEN}'
+          access_token: '${secrets.GITHUB_TOKEN}'
         run: |
           git config --global credential.helper store
           echo "https://${{secrets.ACCESS_TOKEN}}:x-oauth-basic@github.com" > ~/.git-credentials
