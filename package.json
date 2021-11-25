@@ -9,8 +9,6 @@
   "dependencies": {
     "@vueuse/core": "^7.1.0",
     "gh-pages": "^3.2.3",
-    "primeicons": "^5.0.0",
-    "primevue": "^3.9.1",
     "vue": "^3.2.6",
     "vue-router": "4",
     "vuex": "^4.0.2"

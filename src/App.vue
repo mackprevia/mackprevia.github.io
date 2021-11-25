@@ -1,11 +1,16 @@
 <script lang="ts">
 import Base from './components/Base.vue'
-import Button from 'primevue/button';
+import TheButton from './components/TheButton.vue'
 
 export default {
   components: {
     Base,
-    Button
+    TheButton
+  },
+  methods: {
+    teste() {
+      console.log("Teste")
+    }
   }
 }
 </script>
@@ -14,7 +19,7 @@ export default {
   <div>
     <img alt="MackPrevIA logo" src="./assets/logo.jpeg" />
     <Base msg="Em construção 🚧 🛑" />
-    <Button label="Entrar" icon="pi pi-check" iconPos="right" />
+    <the-button text="Saber Mais" :onClick="teste" color="" />
     <router-view></router-view>
   </div>
 </template>
@@ -36,14 +41,5 @@ img {
   width: 100%;
   max-width: 35rem;
   height: auto;
-}
-
-.p-button {
-  margin: 1rem;
-}
-
-:root {
-  --primary-color: #2c3e50;
-  --secondary-color: #e74c3c;
 }
 </style>
