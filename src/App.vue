@@ -1,23 +1,25 @@
 <script lang="ts">
 import Base from './components/Base.vue'
+import Button from 'primevue/button';
 
 export default {
   components: {
-    Base
+    Base,
+    Button
   }
 }
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 </script>
 
 <template>
   <div>
     <img alt="MackPrevIA logo" src="./assets/logo.jpeg" />
     <Base msg="Em construção 🚧 🛑" />
+    <Button label="Entrar" icon="pi pi-check" iconPos="right" />
+    <router-view></router-view>
   </div>
 </template>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,5 +36,14 @@ img {
   width: 100%;
   max-width: 35rem;
   height: auto;
+}
+
+.p-button {
+  margin: 1rem;
+}
+
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #e74c3c;
 }
 </style>

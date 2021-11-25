@@ -11,7 +11,6 @@ export default {
 <template>
   <div id="paragraph">
     <h1>{{ msg }}</h1>
-
     <p>
       O MackPrevIA tem como objeto de estudos o fenômeno científico denominado
       Inteligência Artificial e suas imbricações com as ciências jurídicas, em
