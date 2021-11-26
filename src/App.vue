@@ -1,27 +1,16 @@
 <script lang="ts">
-import Base from './components/Base.vue'
-import TheButton from './components/TheButton.vue'
+import TheLanding from "@/views/TheLanding.vue";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   components: {
-    Base,
-    TheButton
+    TheLanding,
   },
-  methods: {
-    teste() {
-      console.log("Teste")
-    }
-  }
-}
+})
 </script>
 
 <template>
-  <div>
-    <img alt="MackPrevIA logo" src="./assets/logo.jpeg" />
-    <Base msg="Em construção 🚧 🛑" />
-    <the-button text="Saber Mais" :onClick="teste" color="" />
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
 
 <style lang="scss">
@@ -33,13 +22,25 @@ export default {
   color: #2c3e50;
 }
 
-div {
-  width: fit-content;
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background: transparent;
+
+  border-radius: 33333px;
 }
 
-img {
-  width: 100%;
-  max-width: 35rem;
-  height: auto;
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 33333px;
+
+  background: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
 }
 </style>
