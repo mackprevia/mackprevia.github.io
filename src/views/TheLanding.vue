@@ -9,7 +9,7 @@ export default defineComponent({
   methods: {
     redirectExtractor(): void {
       this.$store.dispatch('changeTab', 'extractor');
-      this.$router.push("/extractor");
+      this.$router.push({name: "Extractor"});
     }
   }
 });

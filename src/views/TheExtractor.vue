@@ -2,8 +2,13 @@
 import {defineComponent} from "vue";
 import axios from "axios";
 import TheButton from "@/components/TheButton.vue";
+import { useToast } from "vue-toastification";
 
 export default defineComponent({
+  setup () {
+    const toast = useToast();
+    return {toast}
+  },
   components: {TheButton},
   data() {
     return {
@@ -28,24 +33,26 @@ export default defineComponent({
         })
 
         if (fileUploadResult.status > 299) {
-          alert("Falha ao adicionar o arquivo")
+          this.toast.error("Falha ao adicionar o arquivo")
           return
         }
 
-        alert("Dado enviado com sucesso");
+        this.toast.success("Arquivo enviado com sucesso");
 
       } catch (e) {
-        alert("Falha ao enviar o arquivo")
+        this.toast.error("Falha ao adicionar o arquivo")
       }
 
     },
     getFile(event: any): void {
       this.file = event.target.files[0];
-      this.fileName = event.target.files[0].name;
+      const reducedName = event.target.files[0].name.split(".")
+
+      this.fileName = reducedName[0];
+      this.fileExtension = reducedName[1];
+
       if (this.fileName.length > 25) {
-        const reducedName = this.fileName.split(".")
         this.fileName = reducedName[0].substring(0, 25) + "...";
-        this.fileExtension = reducedName[1];
       }
     },
     triggerClick(): void {
@@ -108,8 +115,6 @@ section {
     button {
       white-space: nowrap;
     }
-
-
   }
 
   h1 {

@@ -22,7 +22,7 @@ export default defineComponent({
   components: {TheButton},
   methods: {
     onClick(): void {
-      this.$router.push("/");
+      this.$router.push({name: "Home"});
     }
   }
 });
