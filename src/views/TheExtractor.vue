@@ -2,10 +2,9 @@
 import {defineComponent} from "vue";
 import axios from "axios";
 import TheButton from "@/components/TheButton.vue";
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 
 export default defineComponent({
-  components: {TheButton, FontAwesomeIcon},
+  components: {TheButton},
   data() {
     return {
       file: {
@@ -49,6 +48,10 @@ export default defineComponent({
         this.fileExtension = reducedName[1];
       }
     },
+    triggerClick(): void {
+      let ele = this.$refs.file as any;
+      ele.click()
+    }
   },
 });
 </script>
@@ -62,7 +65,7 @@ export default defineComponent({
     </p>
 
     <div>
-      <the-button color="secondary" class="file-input" @click="this.$refs.file.click()">
+      <the-button color="secondary" class="file-input" @click="triggerClick">
         Selecione seu CNIS
         <input accept=".pdf" type="file" name="file" ref="file" @change="getFile"/>
       </the-button>
