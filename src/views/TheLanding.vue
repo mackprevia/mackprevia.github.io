@@ -8,6 +8,7 @@ export default defineComponent({
   },
   methods: {
     redirectExtractor(): void {
+      this.$store.dispatch('changeTab', 'extractor');
       this.$router.push({name: "Extractor"});
     }
   }
@@ -15,6 +16,7 @@ export default defineComponent({
 </script>
 
 <template>
+  <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
   <div id="paragraph">
     <h1>Em construção 🚧 🛑</h1>
     <p>
@@ -25,14 +27,15 @@ export default defineComponent({
       identificação dos princípios e categorias jurídicas mais adequados a
       orientar sua regulamentação, ainda inexistente no Brasil.
     </p>
-      <the-button @click="redirectExtractor" color="secondary">
-        Saber Mais
-      </the-button>
+    <the-button @click="redirectExtractor" color="secondary">
+      Saber Mais
+    </the-button>
   </div>
 </template>
 
 <style lang="scss" scoped>
 div {
+  width: 100rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -50,7 +53,7 @@ p {
 }
 
 button {
-  max-width: 30vw;
+  max-width: 20rem;
 }
 
 @media only screen and (max-width: 720px) {

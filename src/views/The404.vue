@@ -1,5 +1,6 @@
 <template>
   <section>
+    <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
     <h1>
       Página não encontrada
     </h1>
@@ -29,7 +30,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 section {
-  margin: 0 auto;
+  margin: 5.2rem auto;
   display: flex;
   width: 80vw;
   flex-direction: column;
