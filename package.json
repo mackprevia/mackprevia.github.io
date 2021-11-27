@@ -7,8 +7,12 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^7.1.0",
     "gh-pages": "^3.2.3",
-    "vue": "^3.2.6"
+    "sass": "^1.43.5",
+    "vue": "^3.2.6",
+    "vue-router": "4",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.6.0",

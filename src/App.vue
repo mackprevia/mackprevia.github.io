@@ -1,38 +1,53 @@
 <script lang="ts">
-import Base from './components/Base.vue'
+import TheLanding from "@/views/TheLanding.vue";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   components: {
-    Base
-  }
-}
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+    TheLanding,
+  },
+})
 </script>
 
 <template>
-  <div>
-    <img alt="MackPrevIA logo" src="./assets/logo.jpeg" />
-    <Base msg="Em construção 🚧 🛑" />
-  </div>
+  <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
+  <router-view></router-view>
 </template>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
+  img {
+    width: 100%;
+    max-width: 35rem;
+    height: auto;
+  }
 }
 
-div {
-  width: fit-content;
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background: transparent;
+
+  border-radius: 33333px;
 }
 
-img {
-  width: 100%;
-  max-width: 35rem;
-  height: auto;
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 33333px;
+
+  background: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
 }
 </style>
