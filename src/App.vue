@@ -1,17 +1,23 @@
 <script lang="ts">
 import TheLanding from "@/views/TheLanding.vue";
+import TheHeader from "@/components/TheHeader.vue";
 import {defineComponent} from "vue";
 
 export default defineComponent({
   components: {
+    TheHeader,
     TheLanding,
   },
 })
 </script>
 
 <template>
-  <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
-  <router-view></router-view>
+  <the-header/>
+  <router-view v-slot="{ Component }">
+    <transition name="bounce" >
+      <component :is="Component"/>
+    </transition>
+  </router-view>
 </template>
 
 <style lang="scss">
@@ -19,6 +25,7 @@ export default defineComponent({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   text-align: center;
   color: #2c3e50;
 
@@ -26,6 +33,22 @@ export default defineComponent({
     width: 100%;
     max-width: 35rem;
     height: auto;
+  }
+}
+
+.bounce-enter-active {
+  animation: bounce-in .5s ease-out both;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
