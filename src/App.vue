@@ -11,7 +11,11 @@ export default defineComponent({
 
 <template>
   <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
-  <router-view></router-view>
+  <router-view v-slot="{ Component }">
+    <transition name="fade" mode="out-in">
+      <component :is="Component"/>
+    </transition>
+  </router-view>
 </template>
 
 <style lang="scss">

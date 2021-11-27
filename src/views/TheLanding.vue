@@ -8,7 +8,7 @@ export default defineComponent({
   },
   methods: {
     redirectExtractor(): void {
-      this.$router.push("/extractor");
+      this.$router.push({name: "Extractor"});
     }
   }
 });
