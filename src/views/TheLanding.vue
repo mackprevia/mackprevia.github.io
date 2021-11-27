@@ -1,10 +1,9 @@
 <script lang="ts">
-import {TheBase, TheButton} from "@/components"
+import {TheButton} from "@/components"
 import {defineComponent} from "vue";
 
 export default defineComponent({
   components: {
-    TheBase,
     TheButton,
   },
   methods: {
@@ -16,30 +15,71 @@ export default defineComponent({
 </script>
 
 <template>
-  <div>
-    <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
-    <the-base msg="Em construção 🚧 🛑"/>
-    <the-button :onClick="redirectExtractor" color="secondary">
-      <p>Saber Mais</p>
-    </the-button>
+  <div id="paragraph">
+    <h1>Em construção 🚧 🛑</h1>
+    <p>
+      O MackPrevIA tem como objeto de estudos o fenômeno científico denominado
+      Inteligência Artificial e suas imbricações com as ciências jurídicas, em
+      especial no que diz respeito à sua aplicação como instrumento para
+      melhoria da efetividade do direito previdenciário, bem como a
+      identificação dos princípios e categorias jurídicas mais adequados a
+      orientar sua regulamentação, ainda inexistente no Brasil.
+    </p>
+      <the-button @click="redirectExtractor" color="secondary">
+        Saber Mais
+      </the-button>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 div {
-  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 80vw;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  font-size: 1.25rem;
+  align-self: center;
+  word-wrap: break-word;
+  line-height: 1.5rem;
+  text-align: justify;
+}
+
+button {
+  max-width: 30vw;
+}
+
+@media only screen and (max-width: 720px) {
+  h1 {
+    font-size: 1.75rem;
+  }
 
   p {
-    margin: 0;
-    padding: 0;
-    font-size: inherit;
+    font-size: 1rem;
+    line-height: 1.25rem;
   }
 
-  img {
-    width: 100%;
-    max-width: 35rem;
-    height: auto;
+  button {
+    white-space: nowrap;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  h1 {
+    font-size: 1rem;
   }
 
+  p {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  button {
+    white-space: nowrap;
+  }
 }
 </style>

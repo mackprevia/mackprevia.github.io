@@ -4,10 +4,6 @@ import {defineComponent} from 'vue'
 
 export default defineComponent({
   props: {
-    onClick: {
-      type: Function,
-      required: true
-    },
     color: {
       type: String,
       required: false,
@@ -32,15 +28,19 @@ export default defineComponent({
 </script>
 
 <template>
-  <button :class="theme" @click="() => onClick()">
+  <button :class="theme">
     <slot></slot>
   </button>
 </template>
 
 <style lang="scss" scoped>
 button {
-  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 
+  border-radius: 5px;
   box-shadow: 2px 2px 4px rgba(255, 36, 36, 0.25);
 
   padding: 0.5rem 3rem;

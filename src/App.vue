@@ -10,6 +10,7 @@ export default defineComponent({
 </script>
 
 <template>
+  <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
   <router-view></router-view>
 </template>
 
@@ -20,6 +21,12 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
+  img {
+    width: 100%;
+    max-width: 35rem;
+    height: auto;
+  }
 }
 
 ::-webkit-scrollbar {

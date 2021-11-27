@@ -8,13 +8,17 @@ export default defineComponent({
   components: {TheButton, FontAwesomeIcon},
   data() {
     return {
-      file: ""
+      file: {
+        type: File,
+      },
+      fileName: "",
+      fileExtension: ""
     }
   },
   methods: {
     async sendFile(): Promise<void> {
       let dataForm = new FormData();
-      dataForm.append('file', this.file);
+      dataForm.append('file', this.file as any);
 
       try {
         const fileUploadResult = await axios.post("http://localhost:3000/upload", {
@@ -38,77 +42,71 @@ export default defineComponent({
     },
     getFile(event: any): void {
       this.file = event.target.files[0];
-    }
-  }
+      this.fileName = event.target.files[0].name;
+      if (this.fileName.length > 25) {
+        const reducedName = this.fileName.split(".")
+        this.fileName = reducedName[0].substring(0, 25) + "...";
+        this.fileExtension = reducedName[1];
+      }
+    },
+  },
 });
 </script>
 
 <template>
   <section>
     <h1>Extrator CNIS</h1>
-    <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
     <p>
       Para extrair os dados do seu CNIS, basta selecionar o PDF com os dados
       e enviar para análise. Nenhum dado é salvo durante a análise.
     </p>
+
     <div>
-      <label>
+      <the-button color="secondary" class="file-input" @click="this.$refs.file.click()">
         Selecione seu CNIS
-        <input accept=".pdf" type="file" name="file" multiple ref="files" @change="getFile"/>
-      </label>
-      <the-button color="primary" :on-click="sendFile">
-        <p class="button-text">Enviar</p>
+        <input accept=".pdf" type="file" name="file" ref="file" @change="getFile"/>
+      </the-button>
+      <the-button color="primary" @click="sendFile">
+        Enviar
       </the-button>
     </div>
+    <p class="file-message" v-if="fileName !== ''">Arquivo <strong>{{ fileName }}</strong>
+      com a extensão <strong>{{ fileExtension }}</strong> selecionado</p>
   </section>
 </template>
 
-<style lang="scss">
-label {
-  input {
-    display: none;
-  }
-
-  border-radius: 5px;
-
-  box-shadow: 2px 2px 4px rgba(255, 36, 36, 0.25);
-
-  padding: 0.5rem 3rem;
-  font-weight: 600;
-  font-size: 1.1em;
-  line-height: 1rem;
-
-  cursor: pointer;
-
-  transition: all 200ms ease-in;
-
-  border-color: #ff2424;
-  color: #ff2424;
-  background: transparent;
-}
-
-label:hover {
-  background-color: #ffa8a821;
-}
+<style lang="scss" scoped>
 
 section {
-  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  width: 80vw;
+  flex-direction: column;
+  align-items: center;
+
+  .file-input {
+    margin-right: 0.5rem;
+
+    input {
+      display: none;
+    }
+  }
 
   .button-text {
     margin: 0;
     padding: 0;
-    font-size: 1.4em;
+    font-size: inherit;
   }
 
   div {
-    width: 100%;
-    padding: 1rem;
-  }
+    display: flex;
+    justify-content: center;
 
-  img {
-    width: 100%;
-    max-width: 35rem;
-    height: auto;
+    button {
+      white-space: nowrap;
+    }
+
+
   }
 
   h1 {
@@ -116,8 +114,61 @@ section {
   }
 
   p {
-    font-size: 1.5em;
+    font-size: inherit;
+    align-self: center;
+    word-wrap: break-word;
+    line-height: 1rem;
+    max-height: 10rem;
+    text-align: justify;
+  }
+
+  .file-message {
+    font-size: 0.875em;
+    text-align: center;
+
+    strong {
+      color: #b02121;
+      font-weight: 600;
+      max-width: 1px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 }
 
+@media only screen and (max-width: 720px) {
+  section {
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.25rem;
+    }
+
+    div {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  section {
+    h1 {
+      font-size: 1rem;
+    }
+
+    p {
+      font-size: 0.75rem;
+      line-height: 1rem;
+    }
+
+    div {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+}
 </style>

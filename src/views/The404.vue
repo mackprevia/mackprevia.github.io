@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
-    <p>
+  <section>
+    <h1>
       Página não encontrada
+    </h1>
+    <p>
       <br/>
       Clique no botão abaixo para voltar à tela inicial
     </p>
-    <the-button color="secondary" :on-click="onClick" text="Voltar"/>
-  </div>
+    <the-button color="secondary" @click="onClick">
+      Voltar
+    </the-button>
+  </section>
 </template>
 
 <script lang="ts">
@@ -25,9 +28,26 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-img {
-  width: 100%;
-  max-width: 35rem;
-  height: auto;
+section {
+  margin: 0 auto;
+  display: flex;
+  width: 80vw;
+  flex-direction: column;
+  align-items: center;
+
+  button {
+    margin-top: 1rem;
+    max-width: 20vw;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.875em;
+  }
+
+  h1 {
+    font-size: 1.300em;
+    margin: 0;
+  }
 }
 </style>
