@@ -9,6 +9,7 @@
 		"sourceMap": true,
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
+		"useUnknownInCatchVariables": false,
 		"baseUrl": ".",
 		"lib": ["esnext", "dom"],
 		"paths": {

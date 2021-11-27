@@ -1,6 +1,6 @@
 {
   "name": "previa",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "vite --host",
     "build": "vue-tsc --noEmit && vite build",
@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^7.1.0",
+    "axios": "^0.24.0",
     "gh-pages": "^3.2.3",
     "sass": "^1.43.5",
     "vue": "^3.2.6",
@@ -15,6 +16,7 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
+    "@types/node": "^16.11.10",
     "@vitejs/plugin-vue": "^1.6.0",
     "@vue/compiler-sfc": "^3.0.5",
     "typescript": "^4.3.2",
