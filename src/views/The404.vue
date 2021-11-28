@@ -16,14 +16,14 @@ export default defineComponent({
   <section>
     <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
     <h1>
-      Página não encontrada
+      {{ $t("title") }}
     </h1>
     <p>
       <br/>
-      Clique no botão abaixo para voltar à tela inicial
+      {{ $t("paragraph") }}
     </p>
     <the-button color="secondary" @click="onClick">
-      Voltar
+      {{ $t("buttonText") }}
     </the-button>
   </section>
 </template>
@@ -52,3 +52,18 @@ section {
   }
 }
 </style>
+
+<i18n lang="json">
+{
+  "en": {
+    "title": "Page not found",
+    "paragraph": "Click on the button bellow to go back to the home page",
+    "buttonText": "Home"
+  },
+  "pt": {
+      "title": "Página não encontrada",
+      "paragraph": "Clique no botão abaixo para retornar a tela inicial",
+      "buttonText": "Início"
+  }
+}
+</i18n>

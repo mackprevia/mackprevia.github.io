@@ -4,9 +4,10 @@ import useVuelidate from "@vuelidate/core";
 import {email, maxLength, minLength, required,} from "@vuelidate/validators";
 import TheButton from "@/components/TheButton.vue";
 import {useToast} from "vue-toastification";
+import {Translation} from "vue-i18n"
 
 export default defineComponent({
-  components: {TheButton},
+  components: {TheButton, Translation},
   setup: () => ({v$: useVuelidate(), toast: useToast()}),
   data() {
     return {
@@ -41,24 +42,41 @@ export default defineComponent({
 
 <template>
   <section>
-    <h1>Contate-nos!</h1>
+    <h1>{{ $t("title") }}</h1>
     <fieldset>
-      <legend>Contato: </legend>
+      <legend>{{ $t("legend") }}</legend>
       <form @submit.prevent="handleSubmit" @keyup.enter="handleSubmit">
-        <label for="email">Email</label>
+
+        <!--   Email     -->
+        <label for="email">{{ $t("labels.email") }}</label>
         <input :class="{invalid: v$.email.$error}" id="email" type="email" v-model.trim="email" placeholder="email">
-        <p v-if="v$.email.$error">Email <strong>{{ email }}</strong> inválido.</p>
+        <translation v-if="v$.email.$error" keypath="errors.email" tag="p">
+          <template v-slot:email>
+            <strong>{{ email }}</strong>
+          </template>
+        </translation>
 
-        <label for="name">Name</label>
+        <!--   Name     -->
+        <label for="name">{{ $t("labels.name") }}</label>
         <input :class="{invalid: v$.name.$error}" id="name" type="text" v-model.trim="name" placeholder="name">
-        <p v-if="v$.name.$error">Nome <strong>{{ name }}</strong> inválido.</p>
+        <translation v-if="v$.name.$error" keypath="errors.name" tag="p">
+          <template v-slot:name>
+            <strong>{{ name }}</strong>
+          </template>
+        </translation>
 
-        <label for="Message">Message</label>
-        <input :class="{invalid: v$.message.$error}" id="message" type="text" v-model.trim="message" placeholder="message">
-        <p v-if="v$.message.$error">Nome <strong>{{ message }}</strong> inválido.</p>
+        <!--   Message     -->
+        <label for="Message">{{ $t("labels.message") }}</label>
+        <input :class="{invalid: v$.message.$error}" id="message" type="text" v-model.trim="message"
+               placeholder="message">
+        <translation v-if="v$.message.$error" keypath="errors.message" tag="p">
+          <template v-slot:message>
+            <strong>{{ message }}</strong>
+          </template>
+        </translation>
 
         <the-button @click="handleSubmit">
-          Enviar
+          {{ $t("submitButton") }}
         </the-button>
       </form>
     </fieldset>
@@ -124,3 +142,38 @@ section {
   }
 }
 </style>
+
+<i18n lang="json">
+{
+  "en": {
+    "title": "Contact Us!",
+    "legend": "Contact",
+    "labels": {
+      "email": "Email",
+      "name": "Name",
+      "message": "Message"
+    },
+    "errors": {
+      "email": "Email {email} is invalid",
+      "name": "Name {name} is invalid",
+      "message": "Message {message} is invalid"
+    },
+    "submitButton": "Submit"
+  },
+  "pt": {
+    "title": "Contate-nos",
+    "legend": "Contato",
+    "labels": {
+      "email": "Email",
+      "name": "Nome",
+      "message": "Mensagem"
+    },
+    "errors": {
+      "email": "Email {email} é inválido",
+      "name": "Name {name} é inválido",
+      "message": "Message {message} é inválido"
+    },
+    "submitButton": "Enviar"
+  }
+}
+</i18n>
