@@ -13,8 +13,9 @@ const app = createApp(App);
 
 app.use(store, key);
 app.use(Toast, toastOptions);
-app.use(router);
 app.use(i18n);
+app.use(router);
+
 app.component("translation", Translation)
 app.component("the-button", TheButton)
 

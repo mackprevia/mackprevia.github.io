@@ -1,9 +1,7 @@
-import {RouteRecordRaw, createRouter, createWebHistory} from "vue-router";
-import TheLanding from "@/views/TheLanding.vue";
-import TheExtractor from "@/views/TheExtractor.vue";
-import The404 from "@/views/The404.vue";
-import Contact from "@/views/Contact.vue";
+import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
+import {TheLanding, TheExtractor, The404, TheContact, TheAbout} from "@/views";
 import {nextTick} from 'vue';
+import i18n from "@/i18n/I18n";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -11,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Home',
         component: TheLanding,
         meta: {
-            title: "Inicio"
+            title: "home"
         }
     },
     {
@@ -19,15 +17,23 @@ const routes: Array<RouteRecordRaw> = [
         name: "Extractor",
         component: TheExtractor,
         meta: {
-            title: "Extrator"
+            title: "extractor"
         }
     },
     {
         path: '/contact',
         name: 'Contact',
-        component: Contact,
+        component: TheContact,
         meta: {
-            title: "Contato"
+            title: "contact"
+        }
+    },
+    {
+        path: '/about',
+        name: 'About',
+        component: TheAbout,
+        meta: {
+            title: "about"
         }
     },
     {
@@ -51,12 +57,13 @@ const router = createRouter({
 
 router.afterEach((to, _) => {
     nextTick(() => {
-        let title = "| " + to.meta.title
+        let title = "| " + i18n.global.t("titles." + to.meta.title)
         if (!to.meta.title) {
             title = " "
         }
         document.title = "MackPrevIA " + title
-    }).then(() => {})
+    }).then(() => {
+    })
 });
 
 export default router;

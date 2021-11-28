@@ -15,7 +15,27 @@ const i18n = createI18n({
     fallbackLocale: defaultLocale,
     globalInjection: true,
     availableLocales: ["pt", "en"],
-    fallbackWarn: false
+    fallbackWarn: false,
+    messages: {
+        pt: {
+            titles: {
+                home: "Início",
+                extractor: "Extrator",
+                contact: "Contato",
+                about: "Quem Somos",
+                404: "404"
+            }
+        },
+        en: {
+            titles: {
+                home: "Home",
+                extractor: "Extractor",
+                contact: "Contact",
+                about: "About",
+                404: "404"
+            }
+        }
+    }
 })
 
 export default i18n;
