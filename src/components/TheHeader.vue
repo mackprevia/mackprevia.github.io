@@ -1,12 +1,17 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
 
-export default defineComponent({});
+export default defineComponent({
+  data () {
+    return { langs: ['en', 'pt'] }
+  }
+});
 </script>
 
 <template>
   <header>
-    <img alt="MackPrevIA logo small" src="@/assets/logo.jpeg"/>
+    <img @click="$router.push({name: 'Home'})" alt="MackPrevIA logo small" src="@/assets/logo.jpeg"/>
+
     <ul>
       <li>
         <router-link active-class="selected" to="/">{{ $t("routes.home") }}</router-link>
@@ -21,6 +26,14 @@ export default defineComponent({});
         <router-link active-class="selected" to="/about">{{ $t("routes.about") }}</router-link>
       </li>
     </ul>
+
+    <div class="locale-changer">
+      <select v-model="$root.$i18n.locale">
+        <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang.toLowerCase()">
+          {{ lang }}
+        </option>
+      </select>
+    </div>
   </header>
 </template>
 
@@ -35,6 +48,25 @@ header {
 
   .selected {
     border-bottom: 2px solid white;
+  }
+
+  .locale-changer {
+    select {
+      font-family: inherit;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: white;
+
+      border: none;
+      background: inherit;
+
+      option {
+        color: black;
+        background: white;
+        border-width: 0;
+      }
+
+    }
   }
 
   ul {
@@ -75,6 +107,7 @@ header {
   img {
     max-width: 64px !important;
     max-height: 64px !important;
+    cursor: pointer;
   }
 }
 
