@@ -19,17 +19,10 @@ export default defineComponent({
   <section>
     <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
     <div id="paragraph">
-      <h1>Em construção 🚧 🛑</h1>
-      <p>
-        O MackPrevIA tem como objeto de estudos o fenômeno científico denominado
-        Inteligência Artificial e suas imbricações com as ciências jurídicas, em
-        especial no que diz respeito à sua aplicação como instrumento para
-        melhoria da efetividade do direito previdenciário, bem como a
-        identificação dos princípios e categorias jurídicas mais adequados a
-        orientar sua regulamentação, ainda inexistente no Brasil.
-      </p>
+      <h1>{{ $t("title") }}</h1>
+      <p>{{ $t("paragraph") }}</p>
       <the-button @click="redirectExtractor" color="secondary">
-        Saber Mais
+        {{$t("buttonText")}}
       </the-button>
     </div>
   </section>
@@ -88,3 +81,18 @@ button {
   }
 }
 </style>
+
+<i18n lang="json">
+{
+  "en": {
+    "title": "Under construction 🚧 🛑",
+    "paragraph": "MackPrevIA has as its object of study the scientific phenomenon called Artificial Intelligence and its imbrications with the legal sciences, in particular with regard to its application as an instrument to improve the effectiveness of social security law, as well as the identification of more legal principles and categories. adequate to guide its regulation, which does not yet exist in Brazil.",
+    "buttonText": "Learn More"
+  },
+  "pt": {
+    "title": "Em construção 🚧 🛑",
+    "paragraph": "O MackPrevIA tem como objeto de estudos o fenômeno científico denominado Inteligência Artificial e suas imbricações com as ciências jurídicas, em especial no que diz respeito à sua aplicação como instrumento para melhoria da efetividade do direito previdenciário, bem como a identificação dos princípios e categorias jurídicas mais adequados a orientar sua regulamentação, ainda inexistente no Brasil.",
+    "buttonText": "Saber mais"
+  }
+}
+</i18n>

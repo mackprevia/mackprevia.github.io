@@ -21,7 +21,7 @@ export default defineComponent({
       const result = await this.v$.$validate();
       console.log(result);
       if (!result) {
-        this.toast.error("Dados inválidos");
+        this.toast.error(this.$t("toastError"));
         return
       }
     }
@@ -35,7 +35,6 @@ export default defineComponent({
   },
   validationConfig: {
     $autoDirty: true,
-    $lazy: true,
   }
 })
 </script>
@@ -158,7 +157,8 @@ section {
       "name": "Name {name} is invalid",
       "message": "Message {message} is invalid"
     },
-    "submitButton": "Submit"
+    "submitButton": "Submit",
+    "toastError": "Invalid data"
   },
   "pt": {
     "title": "Contate-nos",
@@ -173,7 +173,8 @@ section {
       "name": "Name {name} é inválido",
       "message": "Message {message} é inválido"
     },
-    "submitButton": "Enviar"
+    "submitButton": "Enviar",
+    "toastError": "Dados inválidos"
   }
 }
 </i18n>
