@@ -58,6 +58,11 @@ button {
     padding: 0;
     margin: 0;
   }
+
+  &:hover {
+    background-color: #e23e3e;
+    box-shadow: 2px 3px 4px rgba(54, 7, 7, 0.5);
+  }
 }
 
 .primary {
@@ -66,18 +71,13 @@ button {
   background: #ff2424;
 }
 
-button:hover {
-  background-color: #e23e3e;
-  box-shadow: 2px 3px 4px rgba(54, 7, 7, 0.5);
-}
-
 .secondary {
   border-color: #ff2424;
   color: #ff2424;
   background: transparent;
-}
 
-.secondary:hover {
-  background-color: #ffa8a821;
+  &:hover {
+    background-color: #ffa8a821;
+  }
 }
 </style>
