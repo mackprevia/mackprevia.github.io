@@ -12,9 +12,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
-  <router-view v-slot="{ Component }">
-    <transition name="fade" mode="out-in">
   <the-header/>
   <router-view v-slot="{ Component }">
     <transition name="bounce" >

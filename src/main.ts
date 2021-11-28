@@ -22,7 +22,7 @@ const toastOptions: PluginOptions = {
         }
         return toast;
     },
-    position: POSITION.TOP_RIGHT,
+    position: POSITION.BOTTOM_CENTER,
     timeout: 5000,
     closeOnClick: true,
     pauseOnFocusLoss: true,

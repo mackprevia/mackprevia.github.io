@@ -3,24 +3,6 @@ import {defineComponent} from 'vue'
 
 
 export default defineComponent({
-  data() {
-    return {
-      activeTab: ""
-    }
-  },
-  methods: {
-    isActiveTab(tab: string): boolean {
-      return tab == this.activeTabStore;
-    },
-    changeTab(tab: string): void {
-      this.$store.dispatch('changeTab', tab);
-    }
-  },
-  computed: {
-    activeTabStore(): string {
-      return this.$store.state.activeTab;
-    }
-  }
 });
 </script>
 
@@ -28,17 +10,17 @@ export default defineComponent({
   <header>
     <img alt="MackPrevIA logo small" src="@/assets/logo.jpeg"/>
     <ul>
-      <li :class="{selected: isActiveTab('home')}" @click="changeTab('home')">
-        <router-link to="/">Início</router-link>
+      <li>
+        <router-link active-class="selected" to="/">Início</router-link>
       </li>
-      <li :class="{selected: isActiveTab('extractor')}" @click="changeTab('extractor')">
-        <router-link to="/extractor">Extrator</router-link>
+      <li>
+        <router-link active-class="selected" to="/extractor">Extrator</router-link>
       </li>
-      <li :class="{selected: isActiveTab('contact')}" @click="changeTab('contact')">
-        <router-link to="/contact">Contato</router-link>
+      <li>
+        <router-link active-class="selected" to="/contact">Contato</router-link>
       </li>
-      <li :class="{selected: isActiveTab('about')}" @click="changeTab('about')">
-        <router-link to="/about">Quem Somos</router-link>
+      <li>
+        <router-link active-class="selected" to="/about">Quem Somos</router-link>
       </li>
     </ul>
   </header>
@@ -54,15 +36,13 @@ header {
   padding: 10px;
 
   .selected {
-    color: white;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid white;
   }
 
   ul {
     width: 70%;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
 
     list-style-type: none;
     margin: 0;
@@ -71,7 +51,6 @@ header {
   }
 
   li {
-    cursor: pointer;
     font-weight: bold;
     color: white;
 
@@ -79,7 +58,19 @@ header {
     font-size: 1.25rem;
 
     a {
-      all: unset;
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      cursor: pointer;
+
+      color: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+    }
+
+    a:hover {
+      border-bottom: 2px solid #444444;
     }
   }
 

@@ -7,6 +7,8 @@
     "serve": "vite preview --host --open"
   },
   "dependencies": {
+    "@vuelidate/core": "^2.0.0-alpha.32",
+    "@vuelidate/validators": "^2.0.0-alpha.25",
     "@vueuse/core": "^7.1.0",
     "axios": "^0.24.0",
     "gh-pages": "^3.2.3",

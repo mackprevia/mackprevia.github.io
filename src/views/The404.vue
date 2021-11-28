@@ -1,3 +1,17 @@
+<script lang="ts">
+import {defineComponent} from "vue";
+import TheButton from "@/components/TheButton.vue";
+
+export default defineComponent({
+  components: {TheButton},
+  methods: {
+    onClick(): void {
+      this.$router.push({name: "Home"});
+    }
+  }
+});
+</script>
+
 <template>
   <section>
     <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
@@ -13,20 +27,6 @@
     </the-button>
   </section>
 </template>
-
-<script lang="ts">
-import {defineComponent} from "vue";
-import TheButton from "@/components/TheButton.vue";
-
-export default defineComponent({
-  components: {TheButton},
-  methods: {
-    onClick(): void {
-      this.$router.push({name: "Home"});
-    }
-  }
-});
-</script>
 
 <style lang="scss" scoped>
 section {
