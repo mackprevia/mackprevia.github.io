@@ -1,12 +1,10 @@
 <script lang="ts">
-import TheLanding from "@/views/TheLanding.vue";
 import TheHeader from "@/components/TheHeader.vue";
 import {defineComponent} from "vue";
 
 export default defineComponent({
   components: {
     TheHeader,
-    TheLanding,
   },
 })
 </script>

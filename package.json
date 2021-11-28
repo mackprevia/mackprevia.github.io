@@ -14,11 +14,14 @@
     "gh-pages": "^3.2.3",
     "sass": "^1.43.5",
     "vue": "^3.2.6",
+    "vue-i18n": "^9.2.0-beta.22",
     "vue-router": "4",
     "vue-toastification": "^2.0.0-rc.5",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
+    "@intlify/vite-plugin-vue-i18n": "^3.2.1",
+    "@intlify/vue-i18n-loader": "^4.0.1",
     "@types/node": "^16.11.10",
     "@vitejs/plugin-vue": "^1.6.0",
     "@vue/compiler-sfc": "^3.0.5",

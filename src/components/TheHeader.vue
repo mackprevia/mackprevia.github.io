@@ -1,9 +1,7 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
 
-
-export default defineComponent({
-});
+export default defineComponent({});
 </script>
 
 <template>
@@ -11,16 +9,16 @@ export default defineComponent({
     <img alt="MackPrevIA logo small" src="@/assets/logo.jpeg"/>
     <ul>
       <li>
-        <router-link active-class="selected" to="/">Início</router-link>
+        <router-link active-class="selected" to="/">{{ $t("routes.home") }}</router-link>
       </li>
       <li>
-        <router-link active-class="selected" to="/extractor">Extrator</router-link>
+        <router-link active-class="selected" to="/extractor">{{ $t('routes.extractor') }}</router-link>
       </li>
       <li>
-        <router-link active-class="selected" to="/contact">Contato</router-link>
+        <router-link active-class="selected" to="/contact">{{ $t("routes.contact") }}</router-link>
       </li>
       <li>
-        <router-link active-class="selected" to="/about">Quem Somos</router-link>
+        <router-link active-class="selected" to="/about">{{ $t("routes.about") }}</router-link>
       </li>
     </ul>
   </header>
@@ -102,3 +100,24 @@ header {
   }
 }
 </style>
+
+<i18n>
+{
+  "en": {
+    "routes": {
+      "home": "Home",
+      "extractor": "Extractor",
+      "contact": "Contact",
+      "about": "About Us"
+    }
+  },
+  "pt": {
+    "routes": {
+      "home": "Início",
+      "extractor": "Extrator",
+      "contact": "Contato",
+      "about": "Quem Somos"
+    }
+  }
+}
+</i18n>
