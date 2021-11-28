@@ -16,21 +16,23 @@ export default defineComponent({
 </script>
 
 <template>
-  <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
-  <div id="paragraph">
-    <h1>Em construção 🚧 🛑</h1>
-    <p>
-      O MackPrevIA tem como objeto de estudos o fenômeno científico denominado
-      Inteligência Artificial e suas imbricações com as ciências jurídicas, em
-      especial no que diz respeito à sua aplicação como instrumento para
-      melhoria da efetividade do direito previdenciário, bem como a
-      identificação dos princípios e categorias jurídicas mais adequados a
-      orientar sua regulamentação, ainda inexistente no Brasil.
-    </p>
-    <the-button @click="redirectExtractor" color="secondary">
-      Saber Mais
-    </the-button>
-  </div>
+  <section>
+    <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
+    <div id="paragraph">
+      <h1>Em construção 🚧 🛑</h1>
+      <p>
+        O MackPrevIA tem como objeto de estudos o fenômeno científico denominado
+        Inteligência Artificial e suas imbricações com as ciências jurídicas, em
+        especial no que diz respeito à sua aplicação como instrumento para
+        melhoria da efetividade do direito previdenciário, bem como a
+        identificação dos princípios e categorias jurídicas mais adequados a
+        orientar sua regulamentação, ainda inexistente no Brasil.
+      </p>
+      <the-button @click="redirectExtractor" color="secondary">
+        Saber Mais
+      </the-button>
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
