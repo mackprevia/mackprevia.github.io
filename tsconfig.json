@@ -10,6 +10,7 @@
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
 		"useUnknownInCatchVariables": false,
+		"strictNullChecks": false,
 		"baseUrl": ".",
 		"lib": ["esnext", "dom"],
 		"paths": {

@@ -8,7 +8,7 @@ import {Translation} from "vue-i18n"
 
 export default defineComponent({
   components: {TheButton, Translation},
-  setup: () => ({v$: useVuelidate(), toast: useToast()}),
+  setup: () => ({v$: useVuelidate() as any, toast: useToast()}),
   data() {
     return {
       name: '',
