@@ -23,6 +23,7 @@
     "@intlify/vite-plugin-vue-i18n": "^3.2.1",
     "@intlify/vue-i18n-loader": "^4.0.1",
     "@types/node": "^16.11.10",
+    "@types/vuelidate": "^0.7.15",
     "@vitejs/plugin-vue": "^1.6.0",
     "@vue/compiler-sfc": "^3.0.5",
     "typescript": "^4.3.2",
