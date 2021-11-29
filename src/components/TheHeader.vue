@@ -57,7 +57,10 @@ header {
       font-weight: 600;
       color: white;
 
-      border: none;
+      border: 2px solid white;
+      border-radius: 10px;
+      padding: 4px;
+      outline: none;
       background: inherit;
 
       option {
@@ -65,7 +68,6 @@ header {
         background: white;
         border-width: 0;
       }
-
     }
   }
 

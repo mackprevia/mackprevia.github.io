@@ -57,11 +57,11 @@ const router = createRouter({
 
 router.afterEach((to, _) => {
     nextTick(() => {
-        let title = "| " + i18n.global.t("titles." + to.meta.title)
+        let title = i18n.global.t("titles." + to.meta.title) + " | ";
         if (!to.meta.title) {
-            title = " "
+            title = " ";
         }
-        document.title = "MackPrevIA " + title
+        document.title = title + "MackPrevIA ";
     }).then(() => {
     })
 });

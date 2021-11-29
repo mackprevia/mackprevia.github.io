@@ -19,7 +19,6 @@ export default defineComponent({
   methods: {
     async handleSubmit() {
       const result = await this.v$.$validate();
-      console.log(result);
       if (!result) {
         this.toast.error(this.$t("toastError"));
         return
@@ -74,7 +73,7 @@ export default defineComponent({
           </template>
         </translation>
 
-        <the-button @click="handleSubmit">
+        <the-button disabled @click="handleSubmit">
           {{ $t("submitButton") }}
         </the-button>
       </form>
@@ -91,30 +90,36 @@ section {
   align-content: center;
   font-size: 1em;
 
-
   .invalid {
     border-color: red;
   }
 
   fieldset {
-    margin: 1rem;
     width: 80vw;
-    max-width: 80vw;
+    max-width: 50rem;
+    margin: 1rem;
     align-self: center;
 
+    border: 2px solid black;
+    border-radius: 15px;
 
     legend {
       text-align: left;
     }
 
     form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
 
       label {
-        margin: 1rem;
+        margin: 1.5rem 0 1rem 0;
       }
 
       p {
-        margin: 1rem;
+        font-weight: bold;
+        border-bottom: 1px dash var(--color-primary);
 
         strong {
           color: #b02121;
@@ -123,14 +128,29 @@ section {
 
       input {
         height: 1.8rem;
-        width: 20rem;
+        width: 50vw;
+        max-width: 600px;
+
+        padding-left: .5rem;
 
         border-radius: 5px;
         border-width: 1.5px;
         border-color: rgba(0, 0, 0, 0.25);
+
+        transition: all 150ms;
+
+        &::placeholder {
+          color: rgba(0, 0, 0, 0.46);
+        }
+
+        &:focus {
+          outline: none !important;
+          border: 2px solid var(--color-primary);
+        }
       }
 
       button {
+        margin-top: 4rem;
         max-width: 15rem;
 
         .submit {

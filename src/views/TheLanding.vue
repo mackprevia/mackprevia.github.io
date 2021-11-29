@@ -1,5 +1,5 @@
 <script lang="ts">
-import {TheButton} from "@/components"
+import {TheButton} from "@/components";
 import {defineComponent} from "vue";
 
 export default defineComponent({
@@ -22,7 +22,7 @@ export default defineComponent({
       <h1>{{ $t("title") }}</h1>
       <p>{{ $t("paragraph") }}</p>
       <the-button @click="redirectExtractor" color="secondary">
-        {{$t("buttonText")}}
+        {{ $t("buttonText") }}
       </the-button>
     </div>
   </section>
