@@ -8,7 +8,7 @@ export default defineComponent({
       type: String,
       required: false,
       default: "secondary",
-    },
+    }
   },
   computed: {
     theme(): Object {
@@ -50,34 +50,46 @@ button {
 
   cursor: pointer;
 
-  transition: all 200ms ease-in;
-
   slot {
     font-weight: inherit;
     font-size: inherit;
     padding: 0;
     margin: 0;
   }
+
+  &:disabled,
+  &:disabled:hover {
+    background-color: #999999;
+    color: white;
+    cursor: default;
+    border: none;
+    box-shadow: none;
+  }
 }
 
 .primary {
   border-color: transparent;
   color: white;
-  background: #ff2424;
-}
+  background: var(--color-primary);
 
-button:hover {
-  background-color: #e23e3e;
-  box-shadow: 2px 3px 4px rgba(54, 7, 7, 0.5);
+  transition: all 300ms ease-in;
+
+  &:hover:enabled {
+    background-color: #e23e3e;
+    box-shadow: 2px 3px 4px rgba(54, 7, 7, 0.5);
+  }
 }
 
 .secondary {
-  border-color: #ff2424;
-  color: #ff2424;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
   background: transparent;
-}
 
-.secondary:hover {
-  background-color: #ffa8a821;
+  transition: all 300ms ease-in;
+
+  &:hover {
+    background-color: #ffa8a821;
+    box-shadow: 2px 3px 4px rgba(54, 7, 7, 0.5);
+  }
 }
 </style>

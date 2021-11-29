@@ -1,12 +1,22 @@
-import { createApp } from "vue";
+import {createApp} from "vue";
 import App from "./App.vue";
-import { store, key } from "./stores";
+import {key, store} from "./stores";
 import router from "@/routes";
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+import i18n from "@/i18n/I18n";
+import toastOptions from "@/plugins/toastification";
+import {Translation} from "vue-i18n";
+import {TheButton} from "@/components";
 
 const app = createApp(App);
 
 app.use(store, key);
-
+app.use(Toast, toastOptions);
+app.use(i18n);
 app.use(router);
+
+app.component("translation", Translation)
+app.component("the-button", TheButton)
 
 app.mount("#app");

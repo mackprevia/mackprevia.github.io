@@ -2,7 +2,7 @@ import { InjectionKey } from "vue";
 import { createStore, Store } from "vuex";
 
 export interface State {
-	count: number;
+	activeTab: string;
 }
 
 export const key: InjectionKey<Store<State>> = Symbol();
@@ -10,22 +10,22 @@ export const key: InjectionKey<Store<State>> = Symbol();
 export const store = createStore<State>({
 	state() {
 		return {
-			count: 0,
+			activeTab: "home",
 		};
 	},
 	getters: {
-		counter(_state, getters) {
-			return getters.count;
+		activeTab(_state, getters) {
+			return getters.activeTab;
 		},
 	},
 	mutations: {
-		increment(state) {
-			state.count++;
+		tabMutation(state, tab) {
+			state.activeTab = tab;
 		},
 	},
 	actions: {
-		increment(context) {
-			context.commit("increment");
+		changeTab(context, tab) {
+			context.commit("tabMutation", tab);
 		},
 	},
 });

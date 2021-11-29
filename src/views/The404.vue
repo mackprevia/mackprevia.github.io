@@ -1,18 +1,3 @@
-<template>
-  <section>
-    <h1>
-      Página não encontrada
-    </h1>
-    <p>
-      <br/>
-      Clique no botão abaixo para voltar à tela inicial
-    </p>
-    <the-button color="secondary" @click="onClick">
-      Voltar
-    </the-button>
-  </section>
-</template>
-
 <script lang="ts">
 import {defineComponent} from "vue";
 import TheButton from "@/components/TheButton.vue";
@@ -21,15 +6,31 @@ export default defineComponent({
   components: {TheButton},
   methods: {
     onClick(): void {
-      this.$router.push("/");
+      this.$router.push({name: "Home"});
     }
   }
 });
 </script>
 
+<template>
+  <section>
+    <img alt="MackPrevIA logo" src="@/assets/logo.jpeg"/>
+    <h1>
+      {{ $t("title") }}
+    </h1>
+    <p>
+      <br/>
+      {{ $t("paragraph") }}
+    </p>
+    <the-button color="secondary" @click="onClick">
+      {{ $t("buttonText") }}
+    </the-button>
+  </section>
+</template>
+
 <style lang="scss" scoped>
 section {
-  margin: 0 auto;
+  margin: 5.2rem auto;
   display: flex;
   width: 80vw;
   flex-direction: column;
@@ -51,3 +52,18 @@ section {
   }
 }
 </style>
+
+<i18n lang="json">
+{
+  "en": {
+    "title": "Page not found",
+    "paragraph": "Click on the button bellow to go back to the home page",
+    "buttonText": "Home"
+  },
+  "pt": {
+      "title": "Página não encontrada",
+      "paragraph": "Clique no botão abaixo para retornar a tela inicial",
+      "buttonText": "Início"
+  }
+}
+</i18n>

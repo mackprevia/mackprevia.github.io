@@ -2,9 +2,15 @@
 import {defineComponent} from "vue";
 import axios from "axios";
 import TheButton from "@/components/TheButton.vue";
+import {useToast} from "vue-toastification";
+import {Translation} from "vue-i18n";
 
 export default defineComponent({
-  components: {TheButton},
+  setup() {
+    const toast = useToast();
+    return {toast}
+  },
+  components: {TheButton, Translation},
   data() {
     return {
       file: {
@@ -28,24 +34,26 @@ export default defineComponent({
         })
 
         if (fileUploadResult.status > 299) {
-          alert("Falha ao adicionar o arquivo")
+          this.toast.error(this.$t("toastError"))
           return
         }
 
-        alert("Dado enviado com sucesso");
+        this.toast.success(this.$t("toastSuccess"))
 
       } catch (e) {
-        alert("Falha ao enviar o arquivo")
+        this.toast.error(this.$t("toastError"))
       }
 
     },
     getFile(event: any): void {
       this.file = event.target.files[0];
-      this.fileName = event.target.files[0].name;
+      const reducedName = event.target.files[0].name.split(".")
+
+      this.fileName = reducedName[0];
+      this.fileExtension = reducedName[1];
+
       if (this.fileName.length > 25) {
-        const reducedName = this.fileName.split(".")
         this.fileName = reducedName[0].substring(0, 25) + "...";
-        this.fileExtension = reducedName[1];
       }
     },
     triggerClick(): void {
@@ -58,23 +66,30 @@ export default defineComponent({
 
 <template>
   <section>
-    <h1>Extrator CNIS</h1>
+    <h1>{{ $t("title") }}</h1>
     <p>
-      Para extrair os dados do seu CNIS, basta selecionar o PDF com os dados
-      e enviar para análise. Nenhum dado é salvo durante a análise.
+      {{ $t("paragraph") }}
     </p>
 
     <div>
       <the-button color="secondary" class="file-input" @click="triggerClick">
-        Selecione seu CNIS
+        {{ $t("selectButton") }}
         <input accept=".pdf" type="file" name="file" ref="file" @change="getFile"/>
       </the-button>
       <the-button color="primary" @click="sendFile">
-        Enviar
+        {{ $t("submitButton") }}
       </the-button>
     </div>
-    <p class="file-message" v-if="fileName !== ''">Arquivo <strong>{{ fileName }}</strong>
-      com a extensão <strong>{{ fileExtension }}</strong> selecionado</p>
+
+    <translation class="file-message" keypath="selectParagraph" tag="p" v-if="fileName !== ''">
+      <template v-slot:fileName>
+        <strong>{{ fileName }}</strong>
+      </template>
+      <template v-slot:fileExtension>
+        <strong>{{ fileExtension }}</strong>
+      </template>
+    </translation>
+
   </section>
 </template>
 
@@ -108,8 +123,6 @@ section {
     button {
       white-space: nowrap;
     }
-
-
   }
 
   h1 {
@@ -175,3 +188,26 @@ section {
   }
 }
 </style>
+
+<i18n lang="json">
+{
+  "en": {
+    "title": "CNIS Extractor",
+    "paragraph": "To extract the data from your CNIS, just select the PDF with the data and send it for analysis. No data is saved during analysis.",
+    "selectButton": "Select your CNIS",
+    "submitButton": "Send",
+    "selectParagraph": "File {fileName} with extension {fileExtension} was selected",
+    "toastError": "Failed to send the file",
+    "toastSuccess": "File sent successfully"
+  },
+  "pt": {
+    "title": "Extrator CNIS",
+    "paragraph": "Para extrair os dados do seu CNIS, basta selecionar o PDF com os dados e enviar para análise. Nenhum dado é salvo durante a análise.",
+    "selectButton": "Selecione o seu CNIS",
+    "submitButton": "Enviar",
+    "selectParagraph": "Arquivo {fileName} com a extensão {fileExtension} selecionado",
+    "toastError": "Falha ao enviar o arquivo",
+    "toastSuccess": "Arquivo enviado com sucesso"
+  }
+}
+</i18n>
